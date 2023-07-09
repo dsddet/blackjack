@@ -11,13 +11,6 @@ import com.dsddet.Blackjack;
 
 public class BlackjackTests {
 
-    //test_findWinner_when_dealer_is_busted
-    //test_findWinner_when_player_is_busted
-    //test_findWinner_when_both_dealer_and_player_are_busted
-    //test_findWinner_when_dealer_scores_better_than_player
-    //test_findWinner_when_player_scores_better_than_dealer
-    //test_findWinner_when_both_dealer_and_player_have_equal_scores
-    //test_execStrategy
     Deck deck;
     Player player;
     Player dealer;
@@ -86,8 +79,5 @@ public class BlackjackTests {
     public void test_strategy_for_computer_to_stop_playing(){
         assertEquals(this.game.execStategy(15,0.5F),false);
     }
-
-
-
 
 }

@@ -86,8 +86,6 @@ public class Blackjack {
                 declarePlayerAsWinner(false, player, dealer);
                 return dealer;
             }
-
-
     }
 
     /**
@@ -127,8 +125,8 @@ public class Blackjack {
                 continue;
             }
 
-
             if (player.isDealer()) {
+                // Automate dealer's play
                 while (execStategy(player.getCardTotal(), stategy)) {
                     player.pickCard(this.getDeck());
                     System.out.println(String.format("%s. (hit/stand)? %s",
@@ -141,15 +139,15 @@ public class Blackjack {
                 }
 
             } else {
-
+                // Regular user's play
                 while (action.equals("hit")) {
                     action = console.readLine(String.format("%s. (hit/stand)? %s", player.getState(),
-                            player.isBusted() ? "Busted over 21." : "")).toLowerCase(); //Optional isBusted phrase in prompt
+                            player.isBusted() ? "Busted over 21." : "")).toLowerCase();
                     if (player.isBusted()) {
                         action = "stand";
                     }
 
-                    //only pick card in hit state
+                    // only pick card if action was hit
                     if (action.equals("hit")) {
                         player.pickCard(this.getDeck());
                     }

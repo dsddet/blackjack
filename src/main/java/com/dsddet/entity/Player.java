@@ -107,7 +107,7 @@ public class Player {
      * @return
      */
     public String getState() {
-        return String.format("Dealing to player %s, score=(%d): %s", this.name, this.cardTotal, this.cards);
+        return String.format("Dealing to player %s, score=(%d): %s", this.name,this.cardTotal, this.cards);
     }
 
     /**
