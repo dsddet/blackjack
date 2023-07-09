@@ -12,7 +12,7 @@ public class Main {
         try{
             Integer playerCount = Integer.parseInt(args[0]);
             if (playerCount>3){
-                throw new GameException("Exceeded player limit, Max is (3)");
+                throw new GameException("Reached limit, Max players allowed are (3)");
             }
 
             Blackjack game = new Blackjack(playerCount);
