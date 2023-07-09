@@ -1,9 +1,9 @@
-package com.dsddet;
+package com.dsddet.entity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-class Player {
+public class Player {
     private String name;
     private List<Card> cards = new ArrayList<Card>();;
     private Integer cardTotal = 0;

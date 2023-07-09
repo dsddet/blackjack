@@ -1,3 +1,3 @@
+mvn -q install
 echo "Starting game with $1 players"
-javac Blackjack.java >/dev/null 2>&1
-java Blackjack "$1"
+mvn -q exec:java -Dexec.mainClass=com.dsddet.Main -Dexec.args="$1"

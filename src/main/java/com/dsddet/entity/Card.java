@@ -1,6 +1,6 @@
-package com.dsddet;
+package com.dsddet.entity;
 
-class Card {
+public class Card {
     private final String label;
     private final Integer value;
     private final String type;

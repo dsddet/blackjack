@@ -1,11 +1,11 @@
-package com.dsddet;
+package com.dsddet.entity;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-class Deck {
+public class Deck {
     private LinkedList<Card> deck = new LinkedList<Card>();
     public Deck() {
         initDeck();
