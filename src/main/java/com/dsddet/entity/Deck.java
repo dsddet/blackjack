@@ -6,8 +6,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Deck {
+
     private LinkedList<Card> deck = new LinkedList<Card>();
-    public Deck() {
+
+    public static final Deck instance= DeckInitializer.instance;;
+    private Deck() {
         initDeck();
     }
 
@@ -32,6 +35,7 @@ public class Deck {
 
         System.out.println("Shuffling");
         Collections.shuffle(deck);
+
     }
 
     /**
@@ -40,6 +44,7 @@ public class Deck {
      * @return
      */
     public List<Card> getCards(Integer requestedNumber) {
+        Collections.shuffle(deck);
         if (requestedNumber <= 0) {
             // Or throw exception
             return null;
@@ -51,5 +56,9 @@ public class Deck {
         }
 
         return picked;
+    }
+
+    private static class DeckInitializer{
+        public static final Deck instance=new Deck();
     }
 }

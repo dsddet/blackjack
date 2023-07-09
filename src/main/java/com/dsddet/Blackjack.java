@@ -17,7 +17,7 @@ public class Blackjack {
      * @param nosOfPlayers - number of players in the game besides the dealer
      */
     public Blackjack(Integer nosOfPlayers) {
-        this.deck = new Deck(); // Make deck singleton
+        this.deck = Deck.instance; // Make deck singleton
         this.isStillGoing = true;
 
         // Initializing players, basing off number passed as shell arg
@@ -67,7 +67,6 @@ public class Blackjack {
      * Iterates through all players to determine who won i.e player vs dealer
      */
     public Player findWinner(Player player, Player dealer) {
-        System.out.println("++++++ Winners are !! +++++++");
 
             if (dealer.isBusted() && !player.isBusted()) {
                 declarePlayerAsWinner(true, player, dealer);
