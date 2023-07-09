@@ -66,34 +66,27 @@ public class Blackjack {
     /**
      * Iterates through all players to determine who won i.e player vs dealer
      */
-    public void findWinner() {
+    public Player findWinner(Player player, Player dealer) {
         System.out.println("++++++ Winners are !! +++++++");
-        Player dealer = this.players.get(players.size() - 1);// Dealer is at end of the ordered List
-
-        for (Player player : this.getPlayers()) {
-
-            if(player.isDealer()){
-                continue;
-            }
 
             if (dealer.isBusted() && !player.isBusted()) {
-                isPlayerWinner(true, player, dealer);
-                continue;
+                declarePlayerAsWinner(true, player, dealer);
+                return player;
             }
 
             if ((!dealer.isBusted() && player.isBusted()) || (dealer.isBusted() && player.isBusted())) {
-                isPlayerWinner(false, player, dealer);
-                continue;
+                declarePlayerAsWinner(false, player, dealer);
+                return dealer;
             }
 
             if (player.getCardTotal() > dealer.getCardTotal()) {
-                isPlayerWinner(true, player, dealer);
-                continue;
+                declarePlayerAsWinner(true, player, dealer);
+                return player;
             } else {
-                isPlayerWinner(false, player, dealer);
+                declarePlayerAsWinner(false, player, dealer);
+                return dealer;
             }
 
-        }
 
     }
 
@@ -103,7 +96,7 @@ public class Blackjack {
      * @param player - player object
      * @param dealer - dealer object
      */
-    private void isPlayerWinner(boolean doesPlayerWin, Player player, Player dealer) {
+    private void declarePlayerAsWinner(boolean doesPlayerWin, Player player, Player dealer) {
         System.out.println(String.format("Scoring: Player %s has %d, Dealer has %d. %s wins",
                 player.getName(), player.getCardTotal(), dealer.getCardTotal(), doesPlayerWin ? "Player " + player.getName() : "Dealer"));
     }

@@ -1,6 +1,7 @@
 package com.dsddet.entity;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Player {
@@ -33,6 +34,14 @@ public class Player {
      */
     public boolean isBusted() {
         return this.cardTotal > 21;
+    }
+
+    public void setCardTotal(Integer total){
+        this.cardTotal=total;
+    }
+
+    public void setCards(List<Card> card){
+        this.cards=card;
     }
 
     /**
@@ -108,6 +117,10 @@ public class Player {
      */
     public boolean getIsDone() {
         return this.isDone;
+    }
+
+    public String getType(){
+        return this.type;
     }
 
     /**
