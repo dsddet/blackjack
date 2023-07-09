@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import com.dsddet.Blackjack;
 
-public class BlackJack_Tests {
+public class BlackjackTests {
 
     //test_findWinner_when_dealer_is_busted
     //test_findWinner_when_player_is_busted
@@ -75,6 +75,16 @@ public class BlackJack_Tests {
         this.dealer.setCardTotal(18);
         this.player.setCardTotal(18);
         assertTrue(game.findWinner(this.player,this.dealer).getType().equals("Dealer"));
+    }
+
+    @Test
+    public void test_strategy_for_computer_to_keep_playing(){
+        assertTrue(this.game.execStategy(5,0.5F));
+    }
+
+    @Test
+    public void test_strategy_for_computer_to_stop_playing(){
+        assertEquals(this.game.execStategy(15,0.5F),false);
     }
 
 

@@ -6,10 +6,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Deck {
-
-    private LinkedList<Card> deck = new LinkedList<Card>();
-
+    private LinkedList<Card> deck = new LinkedList<>();
     public static final Deck instance= DeckInitializer.instance;;
+
     private Deck() {
         initDeck();
     }
@@ -58,6 +57,9 @@ public class Deck {
         return picked;
     }
 
+    /**
+     * Static class that creates singleton at class loading
+     */
     private static class DeckInitializer{
         public static final Deck instance=new Deck();
     }

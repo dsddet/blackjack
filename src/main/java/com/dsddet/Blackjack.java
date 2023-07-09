@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Blackjack {
-    private List<Player> players = new ArrayList<>();
+    private List<Player> players;
     private final Deck deck;
     private boolean isStillGoing;
 
@@ -17,22 +17,23 @@ public class Blackjack {
      * @param nosOfPlayers - number of players in the game besides the dealer
      */
     public Blackjack(Integer nosOfPlayers) {
-        this.deck = Deck.instance; // Make deck singleton
+        this.players=new ArrayList<>();
+        this.deck = Deck.instance;
         this.isStillGoing = true;
 
-        // Initializing players, basing off number passed as shell arg
+        // Initializing players in game
         while (nosOfPlayers > 0) {
             this.players.add(new Player(nosOfPlayers.toString(), deck, "Player"));
             nosOfPlayers--;
         }
 
-        // Init Player of type dealer
-        this.players.add(new Player("Computer", deck, "Dealer")); // Use an enum
+        // Adding dealer
+        this.players.add(new Player("Computer", deck, "Dealer"));
 
     }
 
     /**
-     * Returns a list containing all players in the game
+     * Returns a list of all players in the game
      * @return
      */
     public List<Player> getPlayers() {
@@ -64,7 +65,7 @@ public class Blackjack {
     }
 
     /**
-     * Iterates through all players to determine who won i.e player vs dealer
+     * Given player & dealer, determines who won based on their scores
      */
     public Player findWinner(Player player, Player dealer) {
 
@@ -90,7 +91,7 @@ public class Blackjack {
     }
 
     /**
-     * Helper for findWinner. Generates and Console logs the winner
+     * Helper for findWinner. prints winner string
      * @param doesPlayerWin - states if player won
      * @param player - player object
      * @param dealer - dealer object
@@ -102,7 +103,7 @@ public class Blackjack {
 
     /**
      * Defines how computer/dealer should play
-     * Uses a percentage score to determine when the dealer should stand
+     * Uses a percentage of 21 to determine when the dealer should stand or hit
      * @param score - dealer's current total scroe
      * @param percent - percentage value, taken of 21 to determine limit score baseline before standing
      * @return

@@ -1,4 +1,4 @@
-public class Player_Tests {
+public class PlayerTests {
 
     //is_busted
     //is_dealer
