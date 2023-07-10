@@ -1,5 +1,7 @@
 package com.dsddet.entity;
 
+import com.dsddet.exception.GameException;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -44,11 +46,10 @@ public class Deck {
      */
     public List<Card> getCards(Integer requestedNumber) {
         Collections.shuffle(deck);
-        if (requestedNumber <= 0) {
-            // Or throw exception
-            return null;
+        if (requestedNumber <= 0 || requestedNumber>this.deck.size()) {
+            throw new GameException("Cards requested from deck should be more 0");
         }
-        LinkedList<Card> picked = new LinkedList<Card>();
+        LinkedList<Card> picked = new LinkedList<>();
         while (requestedNumber > 0) {
             picked.add(this.deck.removeLast());
             requestedNumber--;

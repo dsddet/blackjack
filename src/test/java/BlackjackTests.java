@@ -8,6 +8,10 @@ import com.dsddet.entity.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import com.dsddet.Blackjack;
+import org.mockito.Mockito;
+
+import java.io.Console;
+import java.util.List;
 
 public class BlackjackTests {
 
@@ -79,5 +83,22 @@ public class BlackjackTests {
     public void test_strategy_for_computer_to_stop_playing(){
         assertEquals(this.game.execStategy(15,0.5F),false);
     }
+
+    @Test
+    public void test_if_everyone_plays(){
+        Console console = Mockito.mock(Console.class);
+        Deck deck = Mockito.mock(Deck.class);
+        Mockito.when(console.readLine("Prompt")).thenReturn("hit");
+        Mockito.when(deck.getCards(1)).thenReturn(List.of(cardB,cardA));
+        game.play(console,0.8F);
+
+        Integer numberOfPlayersDone = game.getPlayers().stream().map(x -> x.getIsDone())
+                .filter(x ->x==true)
+                .map(x -> 1)
+                .reduce(0, Integer::sum);
+
+        assertEquals(numberOfPlayersDone,game.getPlayers().size());
+    }
+
 
 }

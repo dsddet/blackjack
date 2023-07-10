@@ -133,7 +133,6 @@ public class Blackjack {
                             player.getState(), player.isBusted() ? "Busted over 21." : ""));
 
                     if (player.isBusted()) {
-                        player.setIsDone(true);
                         break;
                     }
                 }
@@ -142,18 +141,19 @@ public class Blackjack {
                 // Regular user's play
                 while (action.equals("hit")) {
                     action = console.readLine(String.format("%s. (hit/stand)? %s", player.getState(),
-                            player.isBusted() ? "Busted over 21." : "")).toLowerCase();
+                            player.isBusted() ? "Busted over 21." : ""));
+                    action = action==null?"stand":action;
                     if (player.isBusted()) {
                         action = "stand";
                     }
 
                     // only pick card if action was hit
-                    if (action.equals("hit")) {
+                    if ("hit".equalsIgnoreCase(action)) {
                         player.pickCard(this.getDeck());
                     }
                 }
-
             }
+            player.setIsDone(true);
         }
     }
 

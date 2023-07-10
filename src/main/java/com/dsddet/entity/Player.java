@@ -25,7 +25,6 @@ public class Player {
 
         System.out.println(this.type.equals("Dealer") ? "Dealing to computer, card: facedown"
                 : String.format("%s %s", this.getState(), isBusted() ? "Busted over 21" : ""));
-
     }
 
     /**
@@ -37,40 +36,38 @@ public class Player {
     }
 
     public void setCardTotal(Integer total){
-        this.cardTotal=total;
-    }
-
-    public void setCards(List<Card> card){
-        this.cards=card;
-    }
+        this.cardTotal=total;}
 
     /**
      * Getter for name
      * @return
      */
     public String getName() {
-        return this.name;
-    }
+        return this.name;}
 
     /**
      * Determines if player is a dealer
      * @return
      */
     public boolean isDealer() {
-        return this.type.equalsIgnoreCase("Dealer");
-    }
+        return this.type.equalsIgnoreCase("Dealer");}
+
+    /**
+     * Returns card a player has
+     * @return list of cards player has
+     */
+    public List<Card> getCards(){
+        return this.cards;}
 
     /**
      * Retrieves cards
      * @param deck - Deck of cards
      */
-    public void pickCard(Deck deck) {
+    public List<Card> pickCard(Deck deck) {
         if (this.isDone) {
-            return;
+            return null;
         }
-        addCards(deck.getCards(1));
-
-    }
+        return addCards(deck.getCards(1));}
 
     /**
      * Getter for cardTotal
@@ -84,7 +81,7 @@ public class Player {
      * Adds cards to a player's list of cards
      * @param cards - cards to be added to player's list
      */
-    private void addCards(List<Card> cards) {
+    private List<Card> addCards(List<Card> cards) {
         Integer incomingCountOfA = cards.stream().filter(x -> x.getLabel().equals("A")).map(x -> 1).reduce(0,
                 Integer::sum);
         this.countOfA = this.countOfA + incomingCountOfA;
@@ -99,6 +96,7 @@ public class Player {
         if (this.isBusted()) { // Over 21 is an automatic done, but 21 is not.
             this.setIsDone(true);
         }
+        return cards;
 
     }
 
@@ -118,9 +116,12 @@ public class Player {
         return this.isDone;
     }
 
+    /**
+     * Get type of player, dealer or player
+     * @return
+     */
     public String getType(){
-        return this.type;
-    }
+        return this.type;}
 
     /**
      * isDone Setter
