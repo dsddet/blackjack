@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+//Singleton
 public class Deck {
     private LinkedList<Card> deck = new LinkedList<>();
     public static final Deck instance= DeckInitializer.instance;;

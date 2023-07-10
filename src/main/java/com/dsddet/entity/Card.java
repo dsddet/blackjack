@@ -1,13 +1,10 @@
 package com.dsddet.entity;
 
-public class Card {
-    private String label;
-    private Integer value;
-    private String type;
+public final class Card {
+    private final String label;
+    private final Integer value;
+    private final String type;
 
-    public Card(){
-
-    }
 
     public Card(String label, String type, Integer value) {
         this.label = label;
@@ -23,9 +20,6 @@ public class Card {
         return this.value;
     }
 
-    public void setLabel(String label){
-        this.label=label;
-    }
 
     @Override
     public String toString() {

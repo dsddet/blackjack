@@ -27,8 +27,8 @@ public class BlackjackTests {
         this.deck=Deck.instance;
         this.player=new Player("1",this.deck,"Player");
         this.dealer=new Player("2",this.deck,"Dealer");
-        this.cardA=new Card();
-        this.cardB=new Card();
+        this.cardA=new Card("2","Spades",2);
+        this.cardB=new Card("2","Hearts",2);
         this.game=new Blackjack(2);
     }
 
