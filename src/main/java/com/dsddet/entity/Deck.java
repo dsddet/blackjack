@@ -10,9 +10,8 @@ import java.util.List;
 //Singleton
 public class Deck {
     private LinkedList<Card> deck = new LinkedList<>();
-    public static final Deck instance= DeckInitializer.instance;;
 
-    private Deck() {
+    public Deck() {
         initDeck();
     }
 
@@ -59,10 +58,5 @@ public class Deck {
         return picked;
     }
 
-    /**
-     * Static class that creates singleton at class loading
-     */
-    private static class DeckInitializer{
-        public static final Deck instance=new Deck();
-    }
+
 }

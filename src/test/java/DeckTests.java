@@ -10,7 +10,7 @@ public class DeckTests {
 
     @BeforeEach
     void init() {
-        this.deck=Deck.instance;
+        this.deck=new Deck();
     }
 
     @Test

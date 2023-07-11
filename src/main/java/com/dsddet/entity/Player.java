@@ -63,11 +63,11 @@ public class Player {
      * Retrieves cards
      * @param deck - Deck of cards
      */
-    public List<Card> pickCard(Deck deck) {
+    public List<Card> pickCard(Deck deck, Integer nosOfCards) {
         if (this.isDone) {
             return null;
         }
-        return addCards(deck.getCards(1));}
+        return addCards(deck.getCards(nosOfCards));}
 
     /**
      * Getter for cardTotal

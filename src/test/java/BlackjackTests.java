@@ -24,7 +24,7 @@ public class BlackjackTests {
 
     @BeforeEach
     void init() {
-        this.deck=Deck.instance;
+        this.deck=new Deck();
         this.player=new Player("1",this.deck,"Player");
         this.dealer=new Player("2",this.deck,"Dealer");
         this.cardA=new Card("2","Spades",2);

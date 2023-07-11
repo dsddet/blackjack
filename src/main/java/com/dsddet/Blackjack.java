@@ -18,7 +18,7 @@ public class Blackjack {
      */
     public Blackjack(Integer nosOfPlayers) {
         this.players=new ArrayList<>();
-        this.deck = Deck.instance;
+        this.deck = new Deck();
         this.isStillGoing = true;
 
         // Initializing players in game
@@ -128,7 +128,7 @@ public class Blackjack {
             if (player.isDealer()) {
                 // Automate dealer's play
                 while (execStategy(player.getCardTotal(), stategy)) {
-                    player.pickCard(this.getDeck());
+                    player.pickCard(this.getDeck(),1);
                     System.out.println(String.format("%s. (hit/stand)? %s",
                             player.getState(), player.isBusted() ? "Busted over 21." : ""));
 
@@ -149,7 +149,7 @@ public class Blackjack {
 
                     // only pick card if action was hit
                     if ("hit".equalsIgnoreCase(action)) {
-                        player.pickCard(this.getDeck());
+                        player.pickCard(this.getDeck(),1);
                     }
                 }
             }
